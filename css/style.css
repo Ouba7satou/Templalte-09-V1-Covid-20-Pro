@@ -1,0 +1,794 @@
+*{
+      box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+    padding: 0;
+     margin: 0;
+}
+html {
+    scroll-behavior:smooth;
+}
+/* Start Components*/
+:root {
+    --main-color:#FF4F5B ;
+    --main-background-color: ;
+    --main-padding: ;
+    --main-transition:0.4s all  ;
+
+}
+body {
+    font-family: "Open Sans",sans-serif;
+    background: #f9f9f9;
+}
+ul {
+    list-style: none;
+
+}
+a {
+    text-decoration: none;
+}
+.main-btn{
+    display: block;
+    width: fit-content;
+    padding: 9px 36px;
+    color: white;
+    background: var(--main-color);
+    border-radius: 20px;
+    position: relative;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 33px;
+    letter-spacing: 1px; 
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+.main-btn::after {
+    content: "";
+    position: absolute;
+    clip-path: polygon(0 0, 0% 0%, 40% 60%, 0% 100%);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: var(--main-transition);
+   
+}
+.main-btn:hover::after {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Small */
+@media (min-width:768px) {
+    .container {
+        width: 750px;
+    }
+    .globle-heading {
+        font-size: 80px;
+    }
+}
+/* medium */
+@media (min-width:992px) {
+    .container {
+        width: 970px;
+    }
+}
+/* Large */
+@media (min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* End Components*/
+
+/* Start Header */
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+    z-index: 9999;
+    background: white;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+header .container a {
+    color: black;
+    display: block;
+}
+header .container .logo i {
+    color: var(--main-color);
+    transition: var(--main-transition);
+    animation: virus 5s linear infinite ;
+}
+ @keyframes virus {
+    0%{
+        transform:scale(1);
+    }
+    10% {
+        transform:  scale(0.8);
+    }
+    20% {
+      transform:   scale(1.2);
+      }
+    30% {
+        transform:  scale(1.3);
+    }
+    50% {
+        transform:   scale(0.9);
+    }
+    60% {
+        transform:   scale(1);
+    }
+
+    80% {  transform:   scale(1.1);
+
+    }
+
+    100% {
+      transform: scale(1);
+    } 
+}
+header .container .logo {
+    font-size: 28px;
+    font-weight: 500;   
+}
+header .container nav .bars-menu {
+    font-size: 28px;
+    color: var(--main-color);
+    cursor: pointer;
+   display: none;
+}
+@media (max-width:991px) {
+    header .container nav .bars-menu {
+        display: block;
+    }
+    header .container nav .bars-menu:hover + ul {
+        display: block;
+    }
+}
+ 
+header .container nav ul {
+    display: inline-flex;
+}
+
+@media (max-width:991px ) {
+    header .container nav ul{
+        display: none;
+        top: calc(100% + 1px);
+        position: absolute;
+        right: 0;
+        background: white;
+        padding: 5px 30px 15px 0px;
+        border-radius: 0 0 0 15px;
+    }
+   
+}
+header .container nav ul li {
+    padding: 15px 10px;
+}
+@media (max-width:991px ) {
+    header .container nav ul li {
+        padding: 10px 45px;
+    }
+}
+header .container nav ul li a{
+    position: relative;
+    padding: 7px 1px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #767676;
+}
+header .container nav a:not(.home):after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 3px;
+    left: 0;
+    opacity: 0;
+    background:var(--main-color);
+    transition: all 0.3s cubic-bezier(0, 0.23, 1, 1.63);
+}
+header .container nav a.home:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -5px;
+    left:0;
+    background:var(--main-color);
+}
+header .container nav a:hover::after {
+    bottom: -5px;
+    opacity: 1;
+} 
+/* End Header */
+
+/* Start Loading Section  */
+.loading .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+@media (max-width:767px) {
+    .loading .container {
+        flex-direction: column;
+        padding-top: 105px;
+        text-align: center;
+    }
+}
+.loading .container .text span {
+    color: var(--main-color);
+    font-size: 24px;
+    font-weight: 600;
+}
+@media (max-width:767px) {
+    .loading .container .text span {
+        font-size: 16px;
+    }
+}
+.loading .container .text ,
+.loading .container .image {
+    flex: 1;
+}
+.loading .container .text h2 {
+    font-size: 45px;
+    font-weight: 700;
+    color: #999;
+    margin: 10px auto;
+}
+
+@media (max-width:767px) {
+    .loading .container .text h2 {
+       font-size: 28px;
+    }
+}
+@media (max-width:767px) {
+    .loading .container .text a {
+        margin: 33px auto;
+        font-size: 14px;
+    }
+}
+.loading .container .text p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #999;
+}
+@media (max-width:767px) {
+    .loading .container .text p {
+       font-size: 14px;
+       margin: 10px auto;
+    }
+}
+.loading .container .image img {
+    max-width: 100%;
+}
+/* End Loading Section  */
+
+/* Start Protect Yourself  */
+.protect {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.protect .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.protect h3 {
+    font-size: 35px;
+    margin: 50px auto;
+    text-align: center;
+    color: #767676;
+}
+@media (max-width:767px) {
+    .protect h3 {
+       font-size: 22px;
+    }
+}
+.protect h3 span {
+    color: var(--main-color);
+}
+.protect .container .protect-box {
+    width: 300px;
+    border-radius: 8px;
+    box-shadow: 0 0px 10px #e5e5e5;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    padding: 12px;
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+.protect .container .protect-box:hover {
+    transform: translateY(-8px);
+}
+.protect .container .protect-box h4 {
+    font-size: 25px;
+    color: #999;
+    margin: 12px auto;
+}
+.protect .container .protect-box p {
+    line-height: 1.5;
+    color: #999;
+    font-size: 15px;
+}
+ 
+.protect .container .protect-box a {
+    margin: 33px auto 15px;
+}
+/* End Protect Yourself  */
+
+/* Start Symtoms  */
+.symtoms {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+.symtoms .container {
+    display: flex;
+}
+@media (max-width:767px) {
+    .symtoms .container {
+        flex-direction: column;
+    }
+}
+.symtoms .container .text,
+.symtoms .container .image {
+    flex: 1;
+}
+.symtoms .container .image img {
+    width: 100%;
+}
+.symtoms .container .text h4 {
+    color: #999;
+    font-size: 25px;
+    margin: 10px auto;
+}
+.symtoms .container .text p {
+    line-height: 1.4;
+    font-size: 15px;
+    color: #999;
+    margin: 10px auto;
+}
+.symtoms .container .text h4 span {
+    color: var(--main-color);
+}
+.symtoms .container .text .list {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 18px 30px; 
+    
+}
+@media (max-width:767px) {
+    .symtoms .container .text .list {
+        flex-direction: column;
+    }
+}
+.symtoms .container .text .list ol li {
+    list-style: disc;
+    color: #767676;
+    font-size: 15px;
+    padding: 5px;
+}   
+/* End Symtoms  */
+
+/* Start Prevent */
+.prevent {
+    background: #222;
+}
+.prevent .container .container-1 ,
+.prevent .container .container-2{
+    display: flex;
+    align-items: center;
+}
+@media (max-width:767px) {
+    .prevent .container .container-1 ,
+    .prevent .container .container-2 {
+        flex-direction: column;
+        margin-bottom: 33px;
+    }
+}
+.prevent .container .container-1 .text ,
+.prevent .container .container-1 .image,
+.prevent .container .container-2 .text ,
+.prevent .container .container-2 .image {
+    flex: 1;
+}
+.prevent .container .container-1 .image img,
+.prevent .container .container-2 .image img  {
+    width: 100%;
+}
+.prevent .container .container-1 .text ol ,
+.prevent .container .container-2 .text ol {
+    padding: 10px 15px;
+}
+.prevent .container .container-1 .text ol li,
+.prevent .container .container-2 .text ol li {
+    list-style: disc;
+    color: #c3c3c3;
+    font-size: 15px;
+    padding: 5px;
+}
+.prevent .container .container-1 .text h4 ,
+.prevent .container .container-2 .text h4 {
+    font-size: 29px;
+    margin: 10px auto;
+    color: white;
+}
+.prevent .container .container-1 .text h4 span,
+.prevent .container .container-2 .text h4 span  {
+    color: var(--main-color);
+}
+.prevent .container .container-1 .text p ,
+.prevent .container .container-2 .text p{
+    line-height: 1.5;
+    font-size: 16px;
+    color: white;
+    margin: 10px auto;
+}
+/* End Prevent */
+
+/* Start Handwash */
+.handwash {
+    padding-top: 50px;
+}
+.handwash .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 33px;
+}
+.handwash h4 {
+    font-size: 30px;
+    margin: 45px auto 100px;
+    text-align: center;
+}
+.handwash h4 span {
+    color: var(--main-color);
+}
+.handwash .container .handwash-box {
+    width: 255px;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    counter-increment: wash;
+    transition: var(--main-transition);
+}
+.handwash .container .handwash-box:hover {
+    box-shadow: 0 0px 10px #e5e5e5;
+    transform: translateY(-8px);
+}
+.handwash .container .handwash-box::before {
+    content: counter(wash);
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--main-color);
+    border: 1px solid #e5e5e5;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    top: -20px;
+    left: -20px;
+    
+}
+.handwash .container .handwash-box span {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #767676;
+    margin: 15px auto;
+    font-weight: 700;
+    
+}
+/* End Handwash */
+
+/* Start Spread */
+.spread {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    
+}
+.spread .image-virus {
+    position: relative;
+}
+.spread .image-virus img {
+    position: absolute;
+    width: 60px;
+    
+}
+.spread .image-virus .virus-1 {
+    left: 15%;
+    width: 66px;
+    transform: translate(-15px, 80px);
+    animation: virus-spread-1 8s linear infinite;
+}
+@keyframes virus-spread-1 {
+    0% ,100%{
+        transform: translate(-15px, 80px);
+    }
+    50% {
+        transform: translate(15px, 30px);
+    }
+    80% {
+        transform: translate(0,0);
+    }
+
+}
+.spread .image-virus .virus-2 {
+    right: 20%;
+    transform: translate(-30%,50%);
+    animation: virus-spread-2 8s linear infinite;
+}
+@keyframes virus-spread-2 {
+    0% ,100%{
+        transform: translate(-50px, 40px);
+    }
+    50% {
+        transform: translate(20px, 15px);
+    }
+    80% {
+        transform: translate(0,0);
+    }
+
+}
+.spread .image-virus .virus-3 {
+    transform: translate(-50%, 300%);
+    top: 50%;
+    left: 50%;
+    animation: virus-spread-3 8s linear infinite;
+}
+@keyframes virus-spread-3 {
+    0% ,100%{
+        transform: translate(-50%, 170px);
+    }
+    50% {
+        transform: translate(-100%, 80px);
+    }
+    80% {
+        transform: translate(-80%, 100px);
+    }
+
+}
+.spread .image-virus .virus-4 {
+    right: 0;  
+    transform: translate(-160px, 310px);
+    width: 48px;
+    animation: virus-spread-4 8s linear infinite;
+}
+@keyframes virus-spread-4 {
+    0% ,100%{
+        transform: translate(-100px, 240px);
+    }
+    50% {
+        transform: translate(-105px, 205px);
+    }
+    80% {
+        transform: translate(-55px,180px);
+    }
+
+}
+
+.spread .image-virus .virus-5 {
+    transform: translate(230px, 270px);
+    animation: virus-spread-5 8s linear infinite;
+}
+@keyframes virus-spread-5 {
+    0% ,100%{
+        transform: translate(180px, 150px);
+    }
+    50% {
+        transform: translate(210px, 200px);
+    }
+    80% {
+        transform: translate(170px,230px);
+    }
+
+}
+ 
+@media (max-width:767px) {
+    .spread .image-virus .virus-1 {
+        width: 50px;
+    }
+    .spread .image-virus .virus-2 {
+        width: 45px;
+    }
+    .spread .image-virus .virus-3 ,
+    .spread .image-virus .virus-4 {
+        width: 40px;
+    }
+    @keyframes virus-spread-3 {
+        0% ,100%{
+            transform: translate(-50%, 170px);
+        }
+        50% {
+            transform: translate(-80%, 85px);
+        }
+        80% {
+            transform: translate(-150%, 100px);
+        }
+    
+    }
+    @keyframes virus-spread-4 {
+        0% ,100%{
+            transform: translate(-100px, 120px);
+        }
+        50% {
+            transform: translate(-95px, 140px);
+        }
+        80% {
+            transform: translate(-10px,90px);
+        }
+    
+    }
+    .spread .image-virus .virus-5 {
+        width: 35px;
+    }
+    @keyframes virus-spread-5 {
+        0% ,100%{
+            transform: translate(85px, 50px);
+        }
+        50% {
+            transform: translate(120px, 80px);
+        }
+        80% {
+            transform: translate(170px,30px);
+        }
+    
+    }
+}
+.spread h4 {
+    font-size: 30px;
+    margin: 22px auto 65px;
+    text-align: center;
+}
+.spread  h4 span {
+    color: var(--main-color);
+}
+.spread .container .image-map img{
+     width: 100%;
+    
+}
+/* End Spread */
+
+/* Start Footer */
+footer {
+    background: #333;
+    padding-top: 50px;
+    padding-bottom: 9px;
+}
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+footer .container h4 {
+    font-size: 33px;
+    color: white;
+    margin-bottom: 33px;
+}
+footer .container a {
+    color: white;
+}
+footer .container address {
+    margin-bottom: 20px;
+}
+footer .container address div {
+    color: white;
+    display: flex;
+    align-items: center;   
+}
+footer .container address div i {
+    color: var(--main-color);
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+footer .container address .socail {
+    display: inline-flex;
+    margin: 20px auto;
+}
+footer .container .socail {
+    display: inline-flex;
+}
+footer .container .socail i {
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    background-color: #333;
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+    margin: 5px;
+    transition: var(--main-transition);
+}
+footer .container .socail i:hover {
+    color: var(--main-color);
+    background: white;
+}
+footer .container .footer-box {
+    margin-bottom: 27px;
+}
+footer .container .footer-box-2 ul li {
+    padding: 5px 0;
+}
+footer .container .footer-box-2 ul li a ,
+footer .container .footer-box-3 ul li a {
+    display: flex;
+    align-items: center;
+    transition: var(--main-transition);
+}
+footer .container .footer-box-2 ul li a:hover ,
+footer .container .footer-box-3 ul li a:hover {
+    color: var(--main-color);
+}
+footer .container .footer-box-2 ul li a img {
+    margin-right: 5px;
+}
+footer .container .footer-box-3 ul li {
+    padding: 11px 0;
+}
+footer .copy-r {
+    display: block;
+    margin: 40px auto 22px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+
+}
+footer .copy-r a {
+    color: var(--main-color);
+}
+/* End Footer */
+.uparrow {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    z-index: 99;
+    background: url(../img/virus-1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: virus-up 3s linear infinite;
+}
+@keyframes virus-up {
+    0%,100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
